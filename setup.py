@@ -12,6 +12,6 @@ setup(
     author="Joachim Mortensen",
     license="BSD",
 
-    packages=find_packages(where='src'),
+    packages='src/proman',
     package_dir={'': 'src'},
 )
