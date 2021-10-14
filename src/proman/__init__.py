@@ -60,6 +60,13 @@ class Process:
 
         if self._process is not None:
             return
+
+        # Save a copy of actually-used input for sanity checks
+        fname_started_input = self.io_fname.with_suffix('.in-used')
+        with open(fname_started_input, 'w+') as started_input:
+            started_input.write(self.stdin.read())
+        self.stdin.seek(0)
+
         self._process = subprocess.Popen(
             self.executable,
             stdin=self.stdin,
